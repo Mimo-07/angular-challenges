@@ -31,7 +31,7 @@ export class StudentCardComponent implements OnInit {
     this.http.fetchStudents$.subscribe((s) => this.store.addAll(s));
   }
 
-  addNewItem() {
+  addNewItem(): void {
     this.store.addOne(randStudent());
   }
 }

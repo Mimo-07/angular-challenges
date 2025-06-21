@@ -25,7 +25,7 @@ export class TeacherCardComponent implements OnInit {
     this.http.fetchTeachers$.subscribe((t) => this.store.addAll(t));
   }
 
-  addNewItem() {
+  addNewItem(): void {
     this.store.addOne(randTeacher());
   }
 }
