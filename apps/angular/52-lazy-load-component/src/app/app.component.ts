@@ -1,23 +1,24 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   template: `
     <div class="h-screen bg-gray-500">
-      @if (topLoaded()) {
-        <app-top />
-      } @else {
-        <app-placeholder />
-        <button
-          class="rounded-sm border border-blue-500 bg-blue-300 p-2"
-          (click)="topLoaded.set(true)">
-          Load Top
-        </button>
-      }
+      <router-outlet />
+      <button
+        class="rounded-sm border border-blue-500 bg-blue-300 p-2"
+        (click)="setRoute()">
+        Load Top
+      </button>
     </div>
   `,
   standalone: false,
 })
 export class AppComponent {
-  topLoaded = signal(false);
+  readonly #router = inject(Router);
+
+  setRoute(): void {
+    this.#router.navigate(['top']);
+  }
 }
