@@ -1,0 +1,29 @@
+ <app-card
+      [list]="teachers()"
+      [type]="cardType"
+      customClass="bg-light-red">
+      <app-card-image>
+            <img ngSrc="assets/img/teacher.png" width="200" height="200" alt="" />
+      </app-card-image>
+
+       <button ngProjectAs="button"
+        class="rounded-sm border border-blue-500 bg-blue-300 p-2"
+        (click)="addNewItem()">
+        Add
+    </button>
+
+    
+    <ng-template #itemTemplate let-row>
+        <app-list-item
+            [name]="row.firstName"
+            [id]="row.id">
+            <ng-template #deleteTemplate let-idR="id">
+                <button (click)="delete(idR)">
+                    <img class="h-5" src="assets/svg/trash.svg" alt="trash" />
+                </button>
+            </ng-template>
+        </app-list-item>
+    </ng-template>
+
+    
+</app-card>

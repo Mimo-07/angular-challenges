@@ -1,0 +1,15 @@
+ <div
+      class="flex w-fit flex-col gap-3 rounded-md border-2 border-black p-4"
+      [class]="customClass()">
+      <ng-content select="app-card-image"></ng-content>
+
+      <section>
+        @for (item of list(); track item) {
+            <ng-container 
+            [ngTemplateOutlet]="itemTemplate"
+            [ngTemplateOutletContext] = "{$implicit: item, row: item}"></ng-container>
+        }
+      </section>
+      
+      <ng-content select="button"></ng-content>
+    </div>
